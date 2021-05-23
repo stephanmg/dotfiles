@@ -78,7 +78,7 @@ $hr
 ${color1}Temperatures in Celsius:
 ${color1}HDDs			${alignr}	${color} 0 0 0 0
 ${color1}CPUs			${alignr}	${color} 0 0 0 0
-${color1}GPU 			${alignr}	${color} ${execi 60 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//'}
+${color1}GPU 			${alignr}	${color} ${execi 86400 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//'}
 $hr
 ${color1}File systems:
 ${color1}nvme     ${color}${fs_used /}/${fs_size /}${color1}											

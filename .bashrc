@@ -123,4 +123,3 @@ MANPATH="${MANPATH-$(manpath)}:~/.nom-packages/share/man"
 
 alias ProMesh="~/.local/bin/ProMesh4/.application/bin/ProMesh4"
 alias VRL-Studio="~/.local/bin/VRL-Studio/run"
-

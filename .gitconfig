@@ -4,3 +4,5 @@
 	signkey = F598BCFF445CC90F33123C717D30C7E5755976A6
 [core]
 	editor = vim
+[commit]
+	gpgsign = true

@@ -1,4 +1,4 @@
-alignment top_right
+alignment top_left
 background no 
 border_width 1
 #color1 875A43
@@ -78,7 +78,7 @@ $hr
 ${color1}Temperatures in Celsius:
 ${color1}HDDs			${alignr}	${color} 0 0 0 0
 ${color1}CPUs			${alignr}	${color} 0 0 0 0
-${color1}GPU 			${alignr}	${color} ${execi 86400 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//'}
+${color1}GPU 			${alignr}	${color} ${execi 60 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//'}
 $hr
 ${color1}File systems:
 ${color1}nvme     ${color}${fs_used /}/${fs_size /}${color1}											
@@ -125,3 +125,9 @@ ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 
 ${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
 ${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
 
+$hr
+${color1}Weather${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $1}' | cut -d ' ' -f 4}
+${color}Temperature${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $2}' | awk -F '-' '{print $1}'}
+${color}Wind${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $3}' | awk -F '-' '{print $1}'}
+${color}Humidity${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $4}' | awk -F '-' '{print $1}'}
+${color}Pressure${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $5}' | awk -F '-' '{print $1}'}

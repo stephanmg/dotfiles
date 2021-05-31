@@ -116,10 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias his="history"
-
+# updated PATH and MANPATH
 PATH=$PATH:~/Code/ug4/bin:~/Code/ughub:~/.npm-packages/bin
 MANPATH="${MANPATH-$(manpath)}:~/.nom-packages/share/man"
 
-alias ProMesh="~/.local/bin/ProMesh4/.application/bin/ProMesh4"
+# aliases
+alias his="history"
+alias ProMesh="~/.local/bin/ProMesh4/ProMesh4.sh 2> /dev/null"
 alias VRL-Studio="~/.local/bin/VRL-Studio/run"
+alias make="make -j$(($(nproc)/2))"
+alias weather="curl -s wttr.in | head -n -2"

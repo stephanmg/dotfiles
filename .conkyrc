@@ -84,9 +84,11 @@ ${color1}CPU			${alignr}	${color} ${execi 60000 cat /proc/cpuinfo |grep "model n
 ${color1}GPU 			${alignr}	${color} ${execi 60000 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//' | sed 's/ *$//'}
 $hr
 ${color1}File systems:
-${color1}nvme     ${color}${fs_used /}/${fs_size /}${color1}											
+${color1}system    ${color}${fs_used /}/${fs_size /}${color1}											
 ${fs_bar 12 /}
-${color1}data     ${color}${fs_used /media/stephan/DATA}/${fs_size /media/stephan/DATA}${color1}  					
+${color1}user  ${color}${fs_used /home/stephan}/${fs_size /home/stephan}${color1}											
+${fs_bar 12 /home/stephan}
+${color1}ext     ${color}${fs_used /media/stephan/DATA}/${fs_size /media/stephan/DATA}${color1}  					
 ${fs_bar 12 /media/stephan/DATA}
 # ZFS Pool Data IO 
 ${color1}ZFS Pool Disks

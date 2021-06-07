@@ -1,62 +1,65 @@
-alignment top_left
-background no 
-border_width 1
-#color1 875A43
-#color1 07CC0D
-color1 CCAB8D
-color2 D1E7D1
-color3 FF0000
-color4 FFFFFF
-cpu_avg_samples 2
-default_color D1E7D1
-default_outline_color white
-default_shade_color white
-double_buffer yes
-draw_borders no
-draw_graph_borders yes
-draw_outline no
-draw_shades no
-#gap_x 20
-#gap_y 20
-border_outer_margin 20
-max_port_monitor_connections 64
-maximum_width 500
-minimum_width 500
-# max_specials 512
-max_user_text 16384
-minimum_size 330 10
-net_avg_samples 2
-no_buffers yes
-out_to_console no
-# wm_class_name Conky
-stippled_borders 2
-# wn_window yes
-#settings to define how to draw the window. compiz needs these settings, adjust for your WM
-own_window yes
-own_window_class Conky
-own_window_type desktop 
-#own_window_class conky-semi
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent no
-own_window_argb_value 100
-own_window_colour black
-own_window_argb_visual yes
-#own_window_argb_value 50
-update_interval 2
-uppercase no
-use_xft yes
-xftalpha 0.8
-xftfont  Bitstream Vera Sans Mono:size=8  # for xfce
-#xftfont  Bitstream Vera Sans Mono:size=9 # for gnome
+conky.config = {
+	alignment = 'top_left',
+	background = false,
+	border_width = 1,
+--color1 875A43
+--color1 07CC0D
+	color1 = '#CCAB8D',
+	color2 = '#D1E7D1',
+	color3 = '#FF0000',
+	color4 = '#FFFFFF',
+	cpu_avg_samples = 2,
+	default_color = '#D1E7D1',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+--gap_x 20
+--gap_y 20
+	border_outer_margin = 20,
+	max_port_monitor_connections = 64,
+	maximum_width = 500,
+	minimum_width = '500',
+-- max_specials 512
+	max_user_text = 16384,
+	minimum_width = 330, minimum_height = 10,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+-- wm_class_name Conky
+	stippled_borders = 2,
+-- wn_window yes
+--settings to define how to draw the window. compiz needs these settings, adjust for your WM
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'desktop',
+--own_window_class conky-semi
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = false,
+	own_window_argb_value = 100,
+	own_window_colour = 'black',
+	own_window_argb_visual = true,
+--own_window_argb_value 50
+	update_interval = 2,
+	uppercase = false,
+	use_xft = true,
+	xftalpha = 0.8,
+	font = 'Bitstream Vera Sans Mono:size=8',-- for xfce
+--xftfont  Bitstream Vera Sans Mono:size=9 # for gnome
 
-# WIDTH = 500pixel, ${goto 270} for 2 column designs
-# SMALL BAR HEIGHT: 12, LARGE GRAPH HEIGHT: 240
-
-
-
+-- WIDTH = 500pixel, ${goto 270} for 2 column designs
+-- SMALL BAR HEIGHT: 12, LARGE GRAPH HEIGHT: 240
 
 
-TEXT
+
+
+
+};
+
+conky.text = [[
 ${color1}$nodename     				${alignr}$kernel
 ${color1}Uptime:${color} $uptime ${color1}    	${alignr}Load:${color} $loadavg
 $hr
@@ -131,3 +134,4 @@ ${color}Temperature${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE |
 ${color}Wind${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $3}' | awk -F '-' '{print $1}' | sed 's/ *$//'}
 ${color}Humidity${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $4}' | awk -F '-' '{print $1}' | sed 's/ *$//'}
 ${color}Pressure${alignr}${execi 600 ansiweather -a false -l Weiterstadt,DE | awk -F "=>" '{print $5}' | awk -F '-' '{print $1}' | sed 's/ *$//'}
+]];

@@ -116,13 +116,29 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# updated PATH and MANPATH
+alias his="history"
+
 PATH=$PATH:~/Code/ug4/bin:~/Code/ughub:~/.npm-packages/bin
 MANPATH="${MANPATH-$(manpath)}:~/.nom-packages/share/man"
 
-# aliases
-alias his="history"
 alias ProMesh="~/.local/bin/ProMesh4/ProMesh4.sh 2> /dev/null"
 alias VRL-Studio="~/.local/bin/VRL-Studio/run"
 alias make="make -j$(($(nproc)/2))"
 alias weather="curl -s wttr.in | head -n -2"
+
+# backup home folder
+backup() {
+   BACKUP_FOLDER="/media/stephan/DATA/Ddell Tower 8940"
+   if mountpoint -q -- /media/stephan/DATA/; then
+      echo "Backing up home directory..."
+      cd "${BACKUP_FOLDER}/Home/"
+      tar -cvpzf "$(date).tar.gz" --one-file-system /home/stephan
+
+     if test ["$(id -u)" = 0]; then
+         cd "${BACKUP_FOLDER}/System/"
+         tar -cvpzf "$(date).tar.gz" --one-file-system /   
+     fi
+   else
+      echo "Backup media not mounted. Aborting backup."
+   fi
+}

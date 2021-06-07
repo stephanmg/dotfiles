@@ -81,7 +81,7 @@ $hr
 ${color1}Hardware
 ${color1}SSD			${alignr}	${color} ${execi 60000 cat /sys/block/*/device/model | sed -n '1p' | sed 's/ *$//'}
 ${color1}CPU			${alignr}	${color} ${execi 60000 cat /proc/cpuinfo |grep "model name" | head -n 1 | cut -d '@' -f 1 | cut -d ':' -f 2 | sed 's/ *$//'}
-${color1}GPU 			${alignr}	${color} ${execi 60 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//' | sed 's/ *$//'}
+${color1}GPU 			${alignr}	${color} ${execi 60000 lspci | grep NVIDIA | head -n 1 | awk -F ':' '{print $3}' | sed 's/ //' | sed 's/(.*)//' | sed 's/ *$//'}
 $hr
 ${color1}File systems:
 ${color1}nvme     ${color}${fs_used /}/${fs_size /}${color1}											
@@ -90,7 +90,7 @@ ${color1}data     ${color}${fs_used /media/stephan/DATA}/${fs_size /media/stepha
 ${fs_bar 12 /media/stephan/DATA}
 # ZFS Pool Data IO 
 ${color1}ZFS Pool Disks
-#${color}${execi 60 ~/.config/conky/zpoolstatus.sh}
+#${color}${execi 600 ~/.config/conky/zpoolstatus.sh}
 #${color1}/home      ${color}${fs_used /home}/${fs_size /home}${alignr}${color1} ${fs_bar 12,120 /home}
 #${color1}/opt       ${color}${fs_used /opt}/${fs_size /opt}${alignr}${color1} ${fs_bar 12,120 /opt}
 #${color1}/usr/local ${color}${fs_used /usr/local}/${fs_size /usr/local}${alignr}${color1} ${fs_bar 12,120 /usr/local}

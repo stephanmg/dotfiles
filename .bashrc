@@ -66,8 +66,8 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
- #   PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h\[\033[0;34m\] \w\[\033[0;35m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
+    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h\[\033[0;34m\] \w\[\033[0;35m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
     ;;
 *)
     ;;
@@ -126,14 +126,16 @@ alias ProMesh="~/.local/bin/ProMesh4/ProMesh4.sh 2> /dev/null"
 alias VRL-Studio="~/.local/bin/VRL-Studio/run"
 alias make="make -j$(($(nproc)/2))"
 alias weather="curl -s wttr.in | head -n -2"
+alias rm="rm -i"
 
 # backup home folder
 backup() {
-   BACKUP_FOLDER="/media/stephan/DATA/Ddell Tower 8940"
+   BACKUP_FOLDER="/media/stephan/DATA/Dell Tower 8940"
    if mountpoint -q -- /media/stephan/DATA/; then
       echo "Backing up home directory..."
       cd "${BACKUP_FOLDER}/Home/"
       tar -cvpzf "$(date).tar.gz" --one-file-system /home/stephan
+      cp home.tar.gz "$(date).tar.gz"
 
      if test ["$(id -u)" = 0]; then
          cd "${BACKUP_FOLDER}/System/"
@@ -143,3 +145,6 @@ backup() {
       echo "Backup media not mounted. Aborting backup."
    fi
 }
+
+alias bonna="ssh sgrein@bonna.hpc.uni-bonn.de"
+alias amend_bonn='git commit --amend --author="Stephan Grein <stephan.grein@uni-bonn.de>"'

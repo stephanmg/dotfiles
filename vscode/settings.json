@@ -1,0 +1,28 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#003b00"
+    },
+    "editor.tabSize": 4,
+    "editor.rulers": [80,120],
+    "editor.cursorStyle": "line",
+    "editor.insertSpaces": false,
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
+}

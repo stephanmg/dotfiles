@@ -148,3 +148,8 @@ backup() {
 
 alias bonna="ssh sgrein@bonna.hpc.uni-bonn.de"
 alias amend_bonn='git commit --amend --author="Stephan Grein <stephan.grein@uni-bonn.de>"'
+
+get_my_temps() {
+   for value in $(cat /sys/class/thermal/thermal_zone*/temp); do echo  "$value/1000" | bc | tr -d '\n'; echo " °C"; done
+}
+

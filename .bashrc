@@ -134,7 +134,7 @@ backup() {
    if mountpoint -q -- /media/stephan/DATA/; then
       echo "Backing up home directory..."
       cd "${BACKUP_FOLDER}/Home/"
-      tar -cvpzf "$(date).tar.gz" --one-file-system /home/stephan
+      tar -cvpzf --exclude='Documents/Software/*' "$(date).tar.gz" --one-file-system /home/stephan
       cp home.tar.gz "$(date).tar.gz"
 
      if test ["$(id -u)" = 0]; then
@@ -148,8 +148,10 @@ backup() {
 
 alias bonna="ssh sgrein@bonna.hpc.uni-bonn.de"
 alias amend_bonn='git commit --amend --author="Stephan Grein <stephan.grein@uni-bonn.de>"'
+alias chromium_clean="chromium --disable-field-trial-config"
 
 get_my_temps() {
    for value in $(cat /sys/class/thermal/thermal_zone*/temp); do echo  "$value/1000" | bc | tr -d '\n'; echo " °C"; done
 }
+
 

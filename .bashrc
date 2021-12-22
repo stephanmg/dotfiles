@@ -150,6 +150,7 @@ alias bonna="ssh sgrein@bonna.hpc.uni-bonn.de"
 alias univm="ssh sgrein@131.220.186.21"
 alias amend_bonn='git commit --amend --author="Stephan Grein <stephan.grein@uni-bonn.de>"'
 alias chromium_clean="chromium --disable-field-trial-config"
+
 md_to_pdf() {
    pandoc $1 --pdf-engine=xelatex -V mainfont='DejaVu Sans Mono' -s -o $2
 }
@@ -157,5 +158,3 @@ md_to_pdf() {
 get_my_temps() {
    for value in $(cat /sys/class/thermal/thermal_zone*/temp); do echo  "$value/1000" | bc | tr -d '\n'; echo " °C"; done
 }
-
-

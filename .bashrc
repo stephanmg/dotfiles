@@ -134,7 +134,7 @@ backup() {
    if mountpoint -q -- /media/stephan/DATA/; then
       echo "Backing up home directory..."
       cd "${BACKUP_FOLDER}/Home/"
-      tar -cvpzf --exclude='Documents/Software/*' "$(date).tar.gz" --one-file-system /home/stephan
+      tar --exclude='Documents/Software/*' -cvpzf "$(date).tar.gz" --one-file-system /home/stephan
       cp home.tar.gz "$(date).tar.gz"
 
      if test ["$(id -u)" = 0]; then

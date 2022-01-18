@@ -63,6 +63,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
+if [ "$(uname -s)" = "Darwin" ]; then
+   source /opt/local/share/git/git-prompt.sh
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -119,12 +123,26 @@ fi
 
 alias his="history"
 
-PATH=$PATH:~/Code/ug4/bin:~/Code/ughub:~/.npm-packages/bin
+PATH=$PATH:~/Code/ug4/bin:~/Code/ughub:~/.npm-packages/bin:/opt/local/bin
 MANPATH="${MANPATH-$(manpath)}:~/.nom-packages/share/man"
 
 alias ProMesh="~/.local/bin/ProMesh4/ProMesh4.sh 2> /dev/null"
 alias VRL-Studio="~/.local/bin/VRL-Studio/run"
-alias make="make -j$(($(nproc)/2))"
+
+portable_nproc() {
+    OS="$(uname -s)"
+    if [ "$OS" = "Linux" ]; then
+        NPROCS="$(nproc --all)"
+    elif [ "$OS" = "Darwin" ] || \
+         [ "$(echo "$OS" | grep -q BSD)" = "BSD" ]; then
+        NPROCS="$(sysctl -n hw.ncpu)"
+    else
+        NPROCS="$(getconf _NPROCESSORS_ONLN)"  # glibc/coreutils fallback
+    fi
+    echo "$NPROCS"
+}
+
+alias make="make -j $(portable_nproc)"
 alias weather="curl -s wttr.in | head -n -2"
 alias rm="rm -i"
 

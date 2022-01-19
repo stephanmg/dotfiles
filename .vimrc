@@ -67,6 +67,7 @@ colorscheme happy
 autocmd FileType make set noexpandtab
 
 set colorcolumn=80
+hi ColorColumn ctermbg=magenta guibg=magenta
 
 set nospell
 
